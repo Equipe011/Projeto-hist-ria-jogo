@@ -17,10 +17,10 @@ function iniciaJogo() {
     atual = 0;
     historiaFinal = "";
 
-    telaInicial.style.display = "none";
-    caixaPerguntas.classList.add("mostrar");
-    caixaAlternativas.classList.add("mostrar");
-    caixaResultado.classList.remove("mostrar");
+    telaInicial.hidden = true;
+    caixaResultado.hidden = true;
+    caixaPerguntas.hidden = false;
+    caixaAlternativas.hidden = false;
 
     mostraPergunta();
 }
@@ -64,24 +64,24 @@ function respostaSelecionada(alternativa) {
 }
 
 function mostraResultado() {
-    caixaPerguntas.classList.remove("mostrar");
-    caixaAlternativas.classList.remove("mostrar");
-    caixaResultado.classList.add("mostrar");
-
     caixaPerguntas.textContent = `Em 2049, ${nome}`;
-    textoResultado.textContent = historiaFinal.trim();
     caixaAlternativas.replaceChildren();
+
+    caixaPerguntas.hidden = false;
+    caixaAlternativas.hidden = true;
+    caixaResultado.hidden = false;
+
+    textoResultado.textContent = historiaFinal.trim();
 }
 
 function jogaNovamente() {
     atual = 0;
     historiaFinal = "";
 
-    caixaResultado.classList.remove("mostrar");
-    caixaPerguntas.classList.remove("mostrar");
-    caixaAlternativas.classList.remove("mostrar");
-
-    telaInicial.style.display = "block";
+    caixaResultado.hidden = true;
+    telaInicial.hidden = false;
+    caixaPerguntas.hidden = true;
+    caixaAlternativas.hidden = true;
 }
 
 function substituiNome() {
@@ -93,4 +93,11 @@ function substituiNome() {
 botaoIniciar.addEventListener("click", iniciaJogo);
 botaoJogarNovamente.addEventListener("click", jogaNovamente);
 
+caixaPerguntas.hidden = true;
+caixaAlternativas.hidden = true;
+caixaResultado.hidden = true;
+
 substituiNome();
+
+console.log("principal.js carregou!");
+console.log("Botão iniciar:", document.querySelector(".iniciar-btn"));
