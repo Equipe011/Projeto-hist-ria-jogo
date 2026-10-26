@@ -37,7 +37,14 @@
         </div>
     </div>
 
-    <script type="module" src="./principal.js"></script>
+    <script>
+    document.querySelector(".iniciar-btn").addEventListener("click", function () {
+        document.querySelector(".tela-inicial").style.display = "none";
+        document.querySelector(".caixa-perguntas").textContent = "O botão está funcionando!";
+    });
+</script>
+
+<script type="module" src="./principal.js"></script>
 </body>
 
 </html>
